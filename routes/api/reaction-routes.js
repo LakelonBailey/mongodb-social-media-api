@@ -7,7 +7,9 @@ const {
 } = require('../../controllers/reaction-controller');
 
 // /api/reactions/<thoughtId>
-router.route('/:thoughtId').post(addReaction);
+router
+.route('/:thoughtId')
+.post(addReaction);
 
 // /api/reactions/<thoughtId>/<reactionId>
 router
