@@ -1,21 +1,17 @@
 const router = require('express').Router();
 const {
-  addComment,
-  removeComment,
+  addReaction,
+  removeReaction,
   addReply,
   removeReply
-} = require('../../controllers/comment-controller');
+} = require('../../controllers/reaction-controller');
 
-// /api/comments/<thoughtId>
-router.route('/:thoughtId').post(addComment);
+// /api/reactions/<thoughtId>
+router.route('/:thoughtId').post(addReaction);
 
-// /api/comments/<thoughtId>/<commentId>
+// /api/reactions/<thoughtId>/<reactionId>
 router
-  .route('/:thoughtId/:commentId')
-  .put(addReply)
-  .delete(removeComment);
-
-// /api/comments/<thoughtId>/<commentId>/<replyId>
-router.route('/:thoughtId/:commentId/:replyId').delete(removeReply);
+  .route('/:thoughtId/:reactionId')
+  .delete(removeReaction);
 
 module.exports = router;

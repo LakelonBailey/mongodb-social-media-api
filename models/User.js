@@ -39,6 +39,11 @@ const UserSchema = new Schema(
 )
 
 
-ThoughtSchema.virtual('friendCount').get(function() {
+UserSchema.virtual('friendCount').get(function() {
     return this.friends.length
-  });
+});
+
+const User = model('User', UserSchema);
+
+module.exports = User;
+
