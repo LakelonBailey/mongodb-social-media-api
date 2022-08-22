@@ -1,6 +1,6 @@
 const { User, Thought } = require('../models');
 
-const thoughtController = {
+const userController = {
   // get all thoughts
   getAllUser(req, res) {
     User.find({})
@@ -15,7 +15,7 @@ const thoughtController = {
       });
   },
 
-  // get one thought by id
+  // get one user by id
   getUserById({ params }, res) {
     User.findOne({ _id: params.id })
     .populate('friends')
@@ -28,14 +28,14 @@ const thoughtController = {
     });
   },
 
-  // createUser
+  // create User
   createUser({ body }, res) {
     User.create(body)
       .then(dbUserData => res.json(dbUserData))
       .catch(err => res.json(err));
   },
 
-  // update thought by id
+  // update user by id
   updateUser({ params, body }, res) {
     User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
       .then(dbUserData => {
@@ -48,6 +48,7 @@ const thoughtController = {
       .catch(err => res.json(err));
   },
 
+  // add friend to user
   addFriend({ params }, res) {
       User.findOneAndUpdate(
           { _id: params.userId },
@@ -62,6 +63,7 @@ const thoughtController = {
           })
   },
 
+  // remove friend from user
   removeFriend({ params }, res) {
     User.findOneAndUpdate(
         { _id: params.userId },
@@ -76,7 +78,7 @@ const thoughtController = {
         })
     },
 
-  // delete thought
+  // delete user
   deleteUser({ params }, res) {
     User.findOneAndDelete({ _id: params.id })
       .then(dbUserData => {
@@ -85,6 +87,7 @@ const thoughtController = {
             return;
           }
 
+          // delete thoughts associated with user
           Thought.deleteMany({
             id: dbUserData.thoughts
         }).then(dbThoughtData => {
@@ -96,7 +99,7 @@ const thoughtController = {
   }
 };
 
-module.exports = thoughtController;
+module.exports = userController;
 
 
 

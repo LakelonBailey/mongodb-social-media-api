@@ -1,0 +1,48 @@
+{
+    "workbench.colorTheme": "Community Material Theme Darker High Contrast",
+    "editor.minimap.enabled": false,
+    "explorer.confirmDelete": false,
+    "workbench.editor.untitled.hint": "hidden",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.guides.bracketPairs": true,
+    "scssLint.showHighlights": false,
+    "scssLint.runOnTextChange": true,
+    "scssLint.errorBackgroundColor": "rgba(200, 0, 0, .2)",
+    "scssLint.warningBackgroundColor": "rgba(200, 120, 0, .2)",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.startupEditor": "none",
+    "eslint.alwaysShowStatus": true,
+    "editor.scrollBeyondLastColumn": 1,
+    "editor.scrollBeyondLastLine": true,
+    "editor.colorDecorators": false,
+    "trailing-spaces.trimOnSave": true,
+    "trailing-spaces.highlightCurrentLine": false,
+    "editor.tokenColorCustomizations": {
+        "comments": "#cccccc"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.format.enable": true,
+    "eslint.run": "onSave",
+    "eslint.workingDirectories": [{
+        "mode": "auto"
+    }],
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--ignore=E501,E701",
+    ],
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorWidth": 2,
+    "terminal.integrated.scrollback": 20000,
+}
