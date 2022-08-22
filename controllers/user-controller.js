@@ -4,10 +4,8 @@ const thoughtController = {
   // get all thoughts
   getAllUser(req, res) {
     User.find({})
-      .populate({
-        path: 'friends',
-        select: '-__v'
-      })
+      .populate('friends')
+      .populate('thoughts')
       .select('-__v')
       .sort({ _id: -1 })
       .then(dbUserData => res.json(dbUserData))
@@ -21,7 +19,11 @@ const thoughtController = {
   getUserById({ params }, res) {
     User.findOne({ _id: params.id })
       .populate({
-        path: 'reactions',
+        path: 'friends',
+        select: '-__v'
+      })
+      .populate({
+        path: 'thoughts',
         select: '-__v'
       })
       .select('-__v')
@@ -44,7 +46,7 @@ const thoughtController = {
     User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
       .then(dbUserData => {
         if (!dbUserData) {
-          res.status(404).json({ message: 'No thought found with this id!' });
+          res.status(404).json({ message: 'No User found with this id!' });
           return;
         }
         res.json(dbUserData);
